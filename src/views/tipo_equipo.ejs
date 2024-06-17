@@ -1,0 +1,67 @@
+<%- include("partials/_header") %>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-9">
+        <h1 class="">Gestion de los Tipos de equipos</h1>
+        <table class="table table-dark table-bordered table-hover">
+          <thead>
+            <tr>
+              <td>n°</td>
+              <td>nombre</td>
+              <td>estado</td>
+              <td>fecha Creacion</td>
+              <td>fecha actualizacion</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (tipo_equipos) { %>
+              <% for(var i=0; i < tipo_equipos.length; i++) { %>
+                <tr>
+                  <td>
+                    <%= (i + 1) %>
+                  </td>
+                  <td>
+                    <%= tipo_equipos[i].nombre %>
+                  </td>
+                  <td>
+                    <%= tipo_equipos[i].estado %>
+                  </td>
+                  <td>
+                    <%= tipo_equipos[i].fecha_creacion %>
+                  </td>
+                  <td>
+                    <%= tipo_equipos[i].fecha_actualizacion %>
+                  </td>
+
+                  <td class="d-flex gap-2">
+                    <a href="/updateTipo_equipos/<%= tipo_equipos[i].id %>" class="btn btn-info">
+                      Edit
+                    </a>
+                    <a href="/deleteTipo_equipos/<%= tipo_equipos[i].id %>" class="btn btn-danger">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+                <% } %>
+                  <% } %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <div class="card-body">
+          <form action="/addTipo_equipos" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" required autofocus />
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado" required>
+              <option value="Activo" selected>Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+            <button type="submit" class="btn btn-info">guardar tipo de equipo</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include("partials/_footer") %>

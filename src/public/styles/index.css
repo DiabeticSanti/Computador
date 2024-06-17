@@ -1,0 +1,26 @@
+body {
+  background: #202020;
+  color: white;
+  max-width: 100vw !important;
+}
+
+h1{
+  color: white;
+}
+
+.productora__form {
+  width: full;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productora__form__container {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.save__button {
+  margin: 0 auto;
+}

@@ -1,0 +1,23 @@
+<%- include("partials/_header") %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card bg-dark">
+        <div class="card-body">
+          <form action="/updateEstado_equipos/<%= estado_equipos.id %>" method="POST">
+            <input type="text" name="nombre" value="<%= estado_equipos.nombre%>" placeholder="nombre"
+              class="form-control mb-2" autofocus required />
+            <label for="estado" style="color:white">Estado</label>
+            <select name="estado" id="estado" required>
+              <option value="Activo" selected>Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">save estado equipo</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include("partials/_footer") %>

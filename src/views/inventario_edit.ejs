@@ -1,0 +1,26 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/updateInventario/<%= inventarios.id %>" method="POST">
+          <input type="text" name="serial" placeholder="Serial" class="form-control mb-2" value="<%= inventarios.serial %>" required autofocus />
+          <input type="text" name="modelo" placeholder="Modelo" class="form-control mb-2" value="<%= inventarios.modelo %>" required />
+          <textarea name="descripcion" placeholder="Descripción" class="form-control mb-2" required><%= inventarios.descripcion %></textarea>
+          <input type="url" name="foto_url" placeholder="Foto URL" class="form-control mb-2" value="<%= inventarios.foto_url %>" />
+          <input type="text" name="color" placeholder="Color" class="form-control mb-2" value="<%= inventarios.color %>" required />
+          <input type="date" name="fecha_compra" placeholder="Fecha de Compra" class="form-control mb-2" value="<%= inventarios.fecha_compra.toISOString().split('T')[0] %>" required />
+          <input type="number" name="precio" placeholder="Precio" class="form-control mb-2" value="<%= inventarios.precio %>" required />
+          <input type="number" name="usuario_id" placeholder="Usuario ID" class="form-control mb-2" value="<%= inventarios.usuario_id %>" required />
+          <input type="number" name="marca_id" placeholder="Marca ID" class="form-control mb-2" value="<%= inventarios.marca_id %>" required />
+          <input type="number" name="estado_equipo_id" placeholder="Estado Equipo ID" class="form-control mb-2" value="<%= inventarios.estado_equipo_id %>" required />
+          <input type="number" name="tipo_equipo_id" placeholder="Tipo Equipo ID" class="form-control mb-2" value="<%= inventarios.tipo_equipo_id %>" required />
+          <button type="submit" class="btn btn-primary">Guardar inventario</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

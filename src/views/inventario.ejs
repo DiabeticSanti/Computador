@@ -1,0 +1,77 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-3">
+        <div class="card-body">
+            <h1 class="">formulario del Inventario</h1>
+          <form action="/addInventario" method="POST">
+            <input type="text" name="serial" placeholder="Serial" class="form-control mb-2" required autofocus />
+            <input type="text" name="modelo" placeholder="Modelo" class="form-control mb-2" required />
+            <textarea name="descripcion" placeholder="Descripción" class="form-control mb-2" required></textarea>
+            <input type="url" name="foto_url" placeholder="Foto URL" class="form-control mb-2" />
+            <input type="text" name="color" placeholder="Color" class="form-control mb-2" required />
+            <input type="date" name="fecha_compra" placeholder="Fecha de Compra" class="form-control mb-2" required />
+            <input type="number" name="precio" placeholder="Precio" class="form-control mb-2" required />
+            <input type="number" name="usuario_id" placeholder="Usuario ID" class="form-control mb-2" required />
+            <input type="number" name="marca_id" placeholder="Marca ID" class="form-control mb-2" required />
+            <input type="number" name="estado_equipo_id" placeholder="Estado Equipo ID" class="form-control mb-2" required />
+            <input type="number" name="tipo_equipo_id" placeholder="Tipo Equipo ID" class="form-control mb-2" required />
+            <button type="submit" class="btn btn-info">Guardar Inventario</button>
+          </form>
+        </div>
+      </div>
+    <div class="col-md-10">
+      <h1 class="">Gestión del Inventario</h1>
+      <table class="table table-dark table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Serial</td>
+            <td>Modelo</td>
+            <td>Descripción</td>
+            <td>Foto URL</td>
+            <td>Color</td>
+            <td>Fecha Compra</td>
+            <td>Precio</td>
+            <td>Usuario</td>
+            <td>Marca</td>
+            <td>Estado</td>
+            <td>Tipo</td>
+            <td>Fecha Creación</td>
+            <td>Fecha Actualización</td>
+            <td>Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (inventarios) { %>
+            <% for(var i=0; i < inventarios.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= inventarios[i].serial %></td>
+                <td><%= inventarios[i].modelo %></td>
+                <td><%= inventarios[i].descripcion %></td>
+                <td><img width="200px" height="200px" src="<%= inventarios[i].foto_url %>" alt="Imagen de inventario"></td>
+                <td><%= inventarios[i].color %></td>
+                <td><%= inventarios[i].fecha_compra %></td>
+                <td><%= inventarios[i].precio %></td>
+                <td><%= inventarios[i].usuario_id %></td>
+                <td><%= inventarios[i].marca_id %></td>
+                <td><%= inventarios[i].estado_equipo_id %></td>
+                <td><%= inventarios[i].tipo_equipo_id %></td>
+                <td><%= inventarios[i].fecha_creacion%></td>
+                <td><%= inventarios[i].fecha_actualizacion %></td>
+                <td class="d-flex gap-2">
+                  <a href="/updateInventario/<%= inventarios[i].id %>" class="btn btn-info">Editar</a>
+                  <a href="/deleteInventario/<%= inventarios[i].id %>" class="btn btn-danger">Eliminar</a>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div> 
+  </div>
+</div>
+
+<%- include("partials/_footer") %>
